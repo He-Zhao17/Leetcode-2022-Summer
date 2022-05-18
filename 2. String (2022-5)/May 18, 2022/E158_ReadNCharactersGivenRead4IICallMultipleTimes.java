@@ -2,7 +2,7 @@ public class E158_ReadNCharactersGivenRead4IICallMultipleTimes {
     char[] buf4 = new char[4];
     int j = 0;
     int re = 0;
-    int ans = read4(buf4)
+    int ans = read4(buf4);
 
     /**
      * @param buf Destination buffer
