@@ -7,26 +7,28 @@ public class E301_RemoveInvalidParentheses {
 
     //答案 回溯+剪枝
     List<String> result = new ArrayList<>();
+
     public List<String> removeInvalidParentheses(String s) {
         int lRemove = 0;
         int rRemove = 0;
-        for (int i = 0; i < s.length(); ++i) {
+        for (int i = 0; i < s.length(); i++) {
             char cur = s.charAt(i);
             if (cur == '(') {
                 lRemove++;
             } else if (cur == ')') {
-                if (lRemove == 0) {
-                    rRemove++;
-                } else {
+                if (lRemove > 0) {
                     lRemove--;
+                } else {
+                    rRemove++;
                 }
             }
         }
         helper(s, 0, 0, 0, lRemove, rRemove);
         return result;
     }
-    private void helper (String str, int index, int lCount, int rCount, int lRemove, int rRemove) {
-        if (lRemove == rRemove && lCount == 0) {
+
+    private void helper(String str, int index, int lCount, int rCount, int lRemove, int rRemove) {
+        if (lRemove == 0 && rRemove == 0) {
             if (isValid(str)) {
                 result.add(str);
             }
@@ -58,17 +60,20 @@ public class E301_RemoveInvalidParentheses {
             }
         }
     }
-    private boolean isValid(String str) {
+
+    private boolean isValid(String cur) {
         int count = 0;
-        for (int i = 0; i < str.length(); ++i) {
-            char ch = str.charAt(i);
-            if (ch == '(') {
+        for (int i = 0; i < cur.length(); i++) {
+            char curChar = cur.charAt(i);
+            if (curChar == '(') {
                 count++;
-            } else if(ch == ')') {
-                if (count == 0) {
+            } else if (curChar == ')') {
+                count--;
+                if (count < 0) {
                     return false;
                 }
             }
+
         }
         return count == 0;
     }
