@@ -9,7 +9,7 @@ import java.util.*;
  */
 
 
-class TreeNode {
+/*class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
@@ -20,7 +20,7 @@ class TreeNode {
         this.left = left;
         this.right = right;
     }
-}
+}*/
 
 //BFS+QUEUE
 public class E257_BinaryTreePaths {
