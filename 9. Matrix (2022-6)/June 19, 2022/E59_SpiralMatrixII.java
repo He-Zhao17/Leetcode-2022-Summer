@@ -15,6 +15,7 @@ public class E59_SpiralMatrixII {
                 ans[n - i - 1][j] = k;
                 k++;
             }
+
             for (int j = n - i - 1; j > i; j--) {
                 ans[j][i] = k;
                 k++;
